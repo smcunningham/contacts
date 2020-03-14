@@ -13,6 +13,7 @@ import (
 	_ "github.com/jackc/pgx/stdlib"
 	"github.com/jmoiron/sqlx"
 	"github.com/jmoiron/sqlx/types"
+	"github.com/joho/godotenv"
 	"github.com/pkg/errors"
 )
 
@@ -41,6 +42,11 @@ type Contact struct {
 }
 
 func getenvWithDefault(name, defaultValue string) string {
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatalln("Error loading .env file")
+	}
+
 	val := os.Getenv(name)
 	if val == "" {
 		val = defaultValue

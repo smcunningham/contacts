@@ -16,7 +16,9 @@
                 <div class="p12">
                     <p class="mb2">{{.Phone}}</p>
                     <p class="pre mb3">{{.Address}}</p>
-                    <p class="mb2"><span class="fw5">Favorite colors:</span> {{StringsJoin .Favorites.Colors ", "}}</p>
+                    <p class="mb2"><span class="fw5">Favorite colors:</span> {{range .Favorites.Colors}}
+                        <br/>&#8226; {{.}}
+                    {{end}}</p>
                 </div>
             </div>
             {{end}}
